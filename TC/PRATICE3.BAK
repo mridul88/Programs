@@ -1,0 +1,8 @@
+#include<stdio.h>
+#include<math.h>
+#define pi 3.142857
+void main()
+{
+	int n= 1000/(200.0 *sin((23.00*pi)/ 180.00));
+	printf("%f",n);
+}

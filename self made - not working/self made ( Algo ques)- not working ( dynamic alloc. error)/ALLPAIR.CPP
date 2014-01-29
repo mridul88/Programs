@@ -1,0 +1,94 @@
+#include<stdio.h>
+#include<conio.h>
+#define MAX 5000
+int main()
+{
+	
+	int **a,i,j,k,l,n;
+	printf("enter the no. of vertices\n");
+	scanf("%d",&n);
+	for(i=0;i<n;i++)
+	{	*(a+i)=new int [n];
+		for(j=0;j<n;j++)
+		{
+			a[i][j]=MAX;
+			if(i==j)
+				a[i][j]=0;
+		}
+	}
+	printf("enter the graph as\tto exit 0 0 0\nnode 1\tnode 2\tweight\n");
+	scanf("%d%d%d",&j,&k,&l);
+	while(j!=0 || k!=0 || l!=0)
+	{
+		a[j-1][k-1]=l;
+		scanf("%d%d%d",&j,&k,&l);
+	}
+	for(k=0;k<n;k++)
+		for(i=0;i<n;i++)
+			for(j=0;j<n;j++)
+			{
+				if( (a[i][k]+a[k][j]) < a[i][j] )
+					a[i][j]=a[i][k]+a[k][j];
+			}
+	printf("\n");
+	for(i=0;i<n;i++)
+	{
+		printf("node %d\t",i);
+		for(j=0;j<n;j++)
+			printf("%d\t",a[i][j]);
+		printf("\n");
+	}
+	getch();
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

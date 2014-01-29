@@ -1,0 +1,44 @@
+#include<iostream.h>
+#include<conio.h>
+class user
+{
+	char name[30];
+	float unit,charge;
+	void input(void)
+	{
+		cout<<"enter the name of user followed by units consumed";
+		cin>>name>>unit;
+	}
+	void print()
+	{
+		cout<<endl<<,name<<" :Rs. "<<charge;
+	}
+	public:
+		void find(void);
+};
+void user ::find(void)
+{
+	input();
+	charge=50;
+	if(unit<=100)
+		charge=charge + unit*.6;
+	else if(unit>100 && unit<=200)
+		charge=charge +(unit-100)*.8+60;
+	else
+		charge=charge+140+(unit-200)*.9;
+	if(charge>300)
+		charge=charge+charge*.15;
+	print();
+}
+void main()
+{
+	clrscr();
+	user *u;
+	int n,i;
+	cout<<"enter the no. of user");
+	cin>>n;
+	u=new user[n];
+	for(i=0;i<n;i++)
+		u[i].find();
+	getch();
+}

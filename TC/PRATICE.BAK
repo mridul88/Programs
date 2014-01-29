@@ -1,0 +1,42 @@
+#include<iostream.h>
+#include<conio.h>
+class item
+{
+	static int count;
+	int a;
+	public :
+	friend void f(int n,item i);
+	item (int n);
+	item () {}
+	void display()
+	{	cout<<a;	}
+	~item()
+	{
+		cout<<"now";
+	}
+};
+item::item(int n)
+{
+	a=n;
+}
+inline void f(int n,item i)
+{   i.a=n;
+	cout<<2*(i.a)<<endl<<(item::count);
+	(item::count)++;
+}
+int item ::count;
+void main()
+{
+	clrscr();
+	int n;
+   item it[3];
+   for(int i=0;i<3;i++)
+   {   //	cin>>n;
+			it[i]=item(i+1);
+			it[i].display();
+	   //	f(n,it[i]);
+   }
+  // item c(8);
+  // c.display();
+
+}

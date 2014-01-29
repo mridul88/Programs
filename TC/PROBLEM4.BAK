@@ -1,0 +1,48 @@
+/*this is a solution for question no:-4*/
+#include<stdio.h>
+#include<conio.h>
+void answer(long int z,long int i,long int m,long int l,long int o)
+{
+	long int seed=l,c=1,a=1,n;
+	while(a!=0)
+	{
+		n=(z*l+i)%m;
+		if(n==seed)
+		{
+			printf("case %ld: %ld\n",o,c);
+			a=0;
+		}
+		else
+		{
+			c++;
+			l=n;
+		}
+	}
+}
+int main()
+{
+	clrscr();
+	long int count=0,b=1,**x,y,o=1,z,i,m,l;
+	while(b!=0)
+	{
+		count++;
+		for(y=0;y<4;y++)
+			scanf("%ld",&x[count][y]);
+		if(x[count][0]==0&&x[count][1]==0&&x[count][2]==0&&x[count][3]==0)
+		{
+			b=0;
+		}
+	 }
+	 while(o<count)
+	 {
+		z=x[o][0];
+		i=x[o][1];
+		m=x[o][2];
+		l=x[o][3];
+		answer(z,i,m,l,o);
+		o++;
+	 }
+	getch();
+	return 0;
+}
+

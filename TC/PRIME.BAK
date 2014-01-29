@@ -1,0 +1,20 @@
+#include<iostream.h>
+void main()
+{
+	int n,i,flag=0,r,c=0;
+	for(n=2;c<51;n++)
+	{
+		for(i=2;i<n;i++)
+		{
+			r=n%i;
+			if(r==0)
+			{ 	flag=1;
+				break;
+			}
+		}
+		if (flag!=1)
+		 {	cout<<n<<"\n";
+			c++;
+			}
+	}
+}

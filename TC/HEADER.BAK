@@ -1,0 +1,3 @@
+#include<hello.h>
+#pragma warn +par
+#pragma warn+rvl

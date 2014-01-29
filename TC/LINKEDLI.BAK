@@ -1,0 +1,168 @@
+#include<conio.h>
+#include<stdio.h>
+#include<stdlib.h>
+static int count;
+struct linklist
+{
+	int px,py,pz,c;
+	struct linklist *next;
+};
+typedef struct linklist node;
+int create( node *p)
+{
+		scanf("%d %d %d %d",&p->px,&p->py,&p->pz,&p->c);
+		if(p->c==0)
+			p->next=NULL;
+		else
+		{  p->next=new(node);
+			create(p->next);
+		}
+		count++;
+		return 0 ;
+}
+
+int print(node *p)
+{
+	if(p->next!=NULL)
+	{	printf("%dx^%dy^%dz^%d + ",p->c,p->px,p->py,p->pz);
+
+	  //	if(p->next->next ==  NULL)   /*to print the last element also*/
+		 //	printf("%d",p->next->m);
+
+		print(p->next);
+	}
+	printf("\n");
+
+	return 0;
+}
+/*node * search(int n, node*p)
+{
+	if(p->next!=NULL)
+	{
+		if(p->next->m==n)
+			return(p);
+		if(p->next->next==NULL&&p->next->m==n)
+			return(p->next);
+		else
+			search(n,p->next);
+	}
+	else
+		return(NULL);
+}
+/*
+int delnode(node *start )
+{  int n;
+	node *b;node*p;
+	printf("\nenter the no. to be deleted\n");
+	scanf("%d",&n );
+	if(start->m==n)
+	{
+		p=start->next;
+		free(start);
+		start=p;
+	}
+	else
+	{
+		b=search(n,start);
+		if(b==NULL)
+			printf("no match found\n");
+		else
+		{
+			p=b->next->next;
+			free(b->next);
+			b->next=p;
+		}
+	}
+	return 0;
+}
+void insert(start)
+{  int n;
+
+	node *b,*p;
+	printf("enter the no.after which you want to insert");
+	scanf("%d",&n);
+	b=search(n,start);
+	b->next->next=p;
+	p=new(node);
+	p->next=
+
+*/
+int add(node*a,node*b,node*f)
+{
+	node*temp;
+	int flag=0;
+	while(a->next!=NULL)
+	{
+		f->c=a->c;
+		temp=b;
+		while(temp->next!=NULL)
+		{
+			if(a->px==temp->px && a->py==temp->py && a->pz==temp->pz)
+			{
+				f->c=f->c + temp->c;
+				f->px=a->px;
+				f->py=a->py;
+				f->pz=a->pz;
+				flag=1;
+			}
+			temp=temp->next;
+		}
+		if(flag==0)
+		{
+			f->c=a->c;
+			f->px=a->px;
+			f->py=a->py;
+			f->pz=a->pz;
+
+		}
+		a=a->next;
+		f=f->next;
+		flag=0;
+	}
+	f->next=NULL;
+	return 0;
+}
+int extra(node *b,node*f)
+{  int flag=0;
+	while(b->next!=NULL)
+	{
+		while(f->next!=NULL)
+		{
+			flag=0;
+			if(b->px==f->px||b->py==f->py||b->pz==f->pz)
+			{	flag=1;    }
+			f=f->next;
+		}
+		if(flag==0)
+		{
+			f->c=b->c;
+			f->px=b->px;
+			f->py=b->py;
+			f->pz=b->pz;
+			f->next->next=NULL;
+			f->next=f->next->next;
+		}
+		b=b->next;
+	}
+	f->next =NULL;
+	return 0;
+}
+
+int main()
+{   int n;
+	 node *poly1,*poly2,*poly3 ;//*search(int , node*);
+	 printf("enter the first polynomial");
+	 create(poly1);
+	 printf("enter the econd polynomial");
+	create(poly2);
+  //	 print(start);
+ //	 delnode(start);
+	 print(poly1);
+	 print(poly2);
+ //	 insert(start);
+	add(poly1,poly2, poly3);
+	extra(poly2,poly3);
+	print(poly3);
+	 getch();
+	 return 0;
+}

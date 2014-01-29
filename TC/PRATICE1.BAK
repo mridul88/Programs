@@ -1,0 +1,31 @@
+#include<iostream.h>
+#include<string.h>
+#include<conio.h>
+#include<stdio.h>
+
+void main()
+{
+	int i=0,c,j=0;
+	clrscr();
+	char *ptr[5]={"roji","manu","mridul","malpani","megha",},*temp;
+	printf("%u %s %s %s	",ptr,*(ptr+1),2+(*ptr),ptr[1]);
+	for(j=0;j<4;j++)
+	{
+	for(c=0;c<4;c++)
+	{
+		i=strcmp(*(ptr+c),*(ptr+c+1));
+		printf("%d\n",i);
+		if(i>0)
+			{
+				temp=*(ptr+c);
+				*(ptr+c)=*(ptr+c+1);
+				*(ptr+c+1)=temp;
+			}
+
+	}
+	}
+	for(i=0;i<5;i++)
+		printf("%s\n",*(ptr+i));
+
+	 getch();
+}

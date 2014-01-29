@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+	clrscr();
+	int n,i,j,num,count=1,flag;
+	printf("enter the value of n\n");
+	scanf("%d",&n);
+	if(n<=0)
+	{
+		printf("Nothing to print\n");
+		return 0;
+	}
+	else if(n>100)
+	{
+		printf("no. should be less than 100");
+		return 0;
+	}
+	for(num=2;count<=n;num++)
+	{
+		flag=0;
+		for(j=2;j<=num/2;j++)
+		{
+			if(num%j==0)
+			{
+				flag=1;
+				break;
+
+			}
+
+		}
+		if(flag!=1)
+		{
+			printf("%3d.%3d\n",count,num);
+			count++;
+		}
+	}
+	getch();
+	return 0;
+}

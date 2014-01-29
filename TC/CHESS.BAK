@@ -1,0 +1,64 @@
+#include<conio.h>
+#include<stdio.h>
+static int a[8][8];
+void danger(int, int);
+void print(void);
+int main()
+{
+	static int r=-1 ;
+	int i,flag;
+	r=r+1;
+	if(r<8)
+	{
+		for(i=0;i<8;i++)
+		{
+			if(a[i][r]==0)
+			{
+				a[i][r]=10;
+				danger(i,r);
+				//print();
+				flag=1;
+				main();
+			}
+		}
+		if(flag!=1)
+		  main();
+	}
+	else
+		print();
+	getch();
+  return 0;
+}
+void danger(int m, int n)
+{
+	for( int i=0;i<8;i++)
+	{
+		a[m][i]= -1;
+		a[i][n]=-1;
+	}
+ //	print();
+	for(i=0; (m+i<8) && (n+i<8);i++)
+		a[m+i][n+i]=-1;
+//	print();
+	for(i=0;(m+i<8) &&( n-i>=0);i++)
+		a[m+i][n-i]=-1;
+//	print();
+	for(i=0;(m-i>=0)&& (n+i<8);i++)
+		a[m-i][n+i]=-1;
+  //	print();
+	for(i=0;(m-i>=0) &&(n-i>=0);i++)
+		a[m-i][n-i]=-1;
+  //	print();
+	a[m][n]=10;
+}
+void print()
+{
+	int i;
+	for(i=0;i<8;i++)
+	{
+		for(int j=0;j<8;j++)
+		 {	printf("%d\t",a[i][j]);   }
+		 printf("\n\n");
+	}
+}
+

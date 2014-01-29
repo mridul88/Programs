@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	int n,i;
+	float avg=0,m=0,s=0,*a;
+	scanf("%d",&n);
+	a=new (float [sizeof(n)]);
+	for(i=0;i<n;i++)
+	{	scanf("%f",&a[i]);
+		s=s+a[i];
+	}
+	avg= s/(float)n;
+	for(i=0;i<n;i++)
+		if(a[i]<avg)
+			m=m+(avg-a[i]);
+	printf("\n%f",m);
+	getch();
+}

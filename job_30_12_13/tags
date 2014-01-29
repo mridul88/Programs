@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CC	Makefile	/^CC = gcc$/;"	m
+CPPFLAGS	Makefile	/^CPPFLAGS=-Wall -g -pedantic -I$(GTEST_DIR)\/include$/;"	m
+CXX	Makefile	/^CXX = g++$/;"	m
+GTEST_DIR	Makefile	/^GTEST_DIR=\/home\/mridul\/gtest$/;"	m
+LDLIBS	Makefile	/^LDLIBS=-lpthread$/;"	m
+TEST	linked_list_test.cpp	/^TEST(PushElements, One) {$/;"	f	signature:(PushElements, One)
+_LINKED_LIST_H_	linked_list.h	2;"	d
+doubly_list	linked_list.h	/^} doubly_list;$/;"	t	typeref:struct:node
+insert	linked_list.cpp	/^int insert(doubly_list ** list, int number)$/;"	f	signature:(doubly_list ** list, int number)
+insert	linked_list.h	/^int insert(doubly_list ** list, int number);$/;"	p	signature:(doubly_list ** list, int number)
+list_to_vector	linked_list.cpp	/^vector<int> list_to_vector(doubly_list *list)$/;"	f	signature:(doubly_list *list)
+main	linked_list_main.cpp	/^int main()$/;"	f	signature:()
+next	linked_list.h	/^    struct node *next;$/;"	m	struct:node	typeref:struct:node::node	access:public
+node	linked_list.h	/^typedef struct node$/;"	s
+node::next	linked_list.h	/^    struct node *next;$/;"	m	struct:node	typeref:struct:node::node	access:public
+node::prev	linked_list.h	/^    struct node *prev;$/;"	m	struct:node	typeref:struct:node::node	access:public
+node::value	linked_list.h	/^    int value;$/;"	m	struct:node	access:public
+prev	linked_list.h	/^    struct node *prev;$/;"	m	struct:node	typeref:struct:node::node	access:public
+print	linked_list.cpp	/^int print(doubly_list *list)$/;"	f	signature:(doubly_list *list)
+print	linked_list.h	/^int print(doubly_list *list);$/;"	p	signature:(doubly_list *list)
+reverse	linked_list.h	/^doubly_list* reverse(doubly_list ** list);$/;"	p	signature:(doubly_list ** list)
+reverse_k	linked_list.h	/^doubly_list* reverse_k(doubly_list **list, int k);$/;"	p	signature:(doubly_list **list, int k)
+reverse_k_skip	linked_list.h	/^doubly_list* reverse_k_skip(doubly_list **list, int k);$/;"	p	signature:(doubly_list **list, int k)
+swap2	linked_list.h	/^int swap2(doubly_list **list);$/;"	p	signature:(doubly_list **list)
+value	linked_list.h	/^    int value;$/;"	m	struct:node	access:public

@@ -1,0 +1,38 @@
+#include<cstdio>
+#include<cstdlib>
+
+using namespace std;
+int main()
+{
+	
+  int n,i,j,k;
+	printf("enter the no.of variables\n");
+	scanf("%d",&n);
+	float *a,*b,*x,sum;
+	a=(float *)malloc (sizeof (float)*(n*(n+1)/2+1));
+	b=(float*) malloc(sizeof(float)*(n+1));
+	x=(float*) malloc(sizeof(float)* (n+1));
+	printf("enter the coffecients of x\n");
+	k=(n*(n+1))/2;
+	for(i=1;i<=k;i++)
+		scanf("%f",&a[i]);
+	printf("enter the value of right hand side\n");
+	for(j=1;j<=n;j++)
+		scanf("%f",&b[j]);
+	x[1]=b[1]/a[1];
+	for(i=2;i<=n;i++)
+	{
+		int sum=0;
+		for(j=1;j<i;j++)
+		{
+			sum=sum +a[(i*(i-1)/2)+j]*x[j];
+		}
+		x[i]=(b[i]-sum)/a[i*(i+1)/2];
+	}
+	for(i=1;i<=n;i++)
+	{
+		printf("x%d = %f \n",i,x[i]);
+	}
+	while(getchar()!='\n');
+	getchar();
+}

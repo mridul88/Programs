@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<conio.h>
+int solution(long int n,long int length)
+{
+	long int l;
+	if(n==1)
+		return (length);
+	else if(n%2L==0)
+	{
+		n=n/2L;
+		length++;
+		l=solution(n,length);
+	}
+	else
+	{
+		n=n*3L+1L;
+		length++;
+		l=solution(n,length);
+	}
+}
+
+
+int main()
+{
+	long int n,m,l,i,maxl=1L,ln;
+	clrscr();
+	printf("enter the range of numbers");
+	scanf("%ld %ld",&n,&m);
+	if(n>m)
+	{ long int temp;  temp=n;
+		n=m;     /*swap n m if n>m*/
+		m=temp;
+	}
+	for( i=n;i<=m;i++)
+	{   if(i%2!=0&&n!=m)
+		{			 /*only for odd no.as their length is larger than even no.*/
+		ln=1L;
+		l=solution(i,ln);
+		if(l>maxl)
+			maxl=l;
+		}
+		else if(n==m)/* if only one even no is input*/
+			maxl=solution(n,1);
+	}
+	printf("maximum length is %ld",maxl);
+	getch();
+	return 0;
+}

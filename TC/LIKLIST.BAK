@@ -1,0 +1,45 @@
+#include<conio.h>
+#include<stdio.h>
+#include<alloc.h>
+#define NULL
+struct node
+{
+	int n;
+	struct node *next;
+};
+typedef struct node node;
+void create(node *l)
+{
+	printf("enter the admission no.\n to quit enter -1 ");
+	scanf("%d", &l->n);
+	if(l->n == -1)
+	{
+		l->next=NULL;
+	}
+	else
+	{
+		l->next=(node*)malloc(sizeof(node));
+		create(l->next);
+	}
+}
+void print(node *l)
+{
+	if(l->next!=NULL)
+	{
+		printf("%d\n",l->n);
+		if(l->next->next==NULL)
+		{
+			printf("%d",l->next->n);
+		}
+	print(l->next);
+	}
+}
+void main()
+{
+	clrscr();
+	create (node *l);
+	print(node *l);
+	getch();
+}
+
+

@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+int check(char s[100][100],int r)
+{
+	if(s[r][0]=='e'&&s[r][1]=='n'&&s[r][2]=='d')
+		return 0;
+	return 1;
+}
+void print(char s[100][100],int r,int n)
+{
+	for(int i=n-1;i>=0;i--)
+	{
+		printf("%c",s[r][i]);
+	}
+}
+int main()
+{
+	clrscr();
+	int c,i=0,j=0,*l;
+	char s[100][100];
+	while(1)
+	{
+		c=getchar();
+		j=0;
+		while(c!='\n')
+		{
+			s[i][j]=c;
+			j++;
+			c=getchar();
+		}
+		l[i]=j;
+		if(l[i]==3)
+		{
+			int k=check(s,i);
+			if(k==0)
+				return 0;
+		}
+		print(s,i,l[i]);
+		i++;
+	}
+	getch();
+	return 0;
+}
+
+
+
+

@@ -1,0 +1,136 @@
+#include<cstdio>
+#include<cctype>
+
+using namespace std;
+long int find(long int n)
+{
+	long int count=1;
+	while(n!=1)
+	{
+		if(n%2==0)
+			n=n/2;
+		else
+			n = 3*n +1;
+		count++;
+	}
+	return count;
+}
+class test
+{
+	public:
+	long int a[3];
+	test()
+	{
+		a[2]=0;
+	}
+};
+int main()
+{
+	long int cylen,i,ch,index=0;
+	test t[10];
+	while((ch=getchar())!='\n')
+	{
+		int subindex=0;
+		while(subindex<1)
+		{
+			t[index].a[subindex]=ch-48;
+			ch=getchar();
+			while(ch>='0'&& ch<='9')
+			{
+				t[index].a[subindex]= (10*t[index].a[subindex]) + ch-48;
+				ch=getchar();
+			}
+			subindex++;
+			while((ch=getchar())==isspace(ch));
+		}
+		index++;
+	}
+	for(int j=0;j<index;j++)
+	{
+		for(i=t[j].a[0];i<=t[j].a[1];i++)
+		{
+			cylen=find(i);
+			if(cylen>=t[j].a[2])
+				t[j].a[2]=cylen;
+		}
+	}
+	for(int j=0;j<index;j++)
+	{
+		for(i=0;i<3;i++)
+			printf("%ld ",t[j].a[i]);
+		printf("\n");
+	}
+	while(getchar()!='\n');
+	getchar();
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

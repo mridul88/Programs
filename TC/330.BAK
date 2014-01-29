@@ -1,0 +1,56 @@
+#include<iostream.h>
+#include<conio.h>
+#include<stdio.h>
+#include<stdlib.h>
+
+class user
+{
+	char name[36];
+	float bill,unit;
+
+  public:
+
+	 float  input(void);
+	 void output(void);
+
+};
+float user:: input (void)
+{
+	cin>>name;
+	cin>>unit;
+	return 0;
+
+}
+void  user::output(void)
+{
+	bill=0.60*((unit<=100)?unit:100) + 0.80*((unit<=300&&unit>100)?(unit-100):0)
+		  +0.90*((unit>300)?(unit-300):0)+50+((unit>300)?160:0);
+	if(bill>300)
+		 bill = bill+(0.15*bill);
+	printf("bill of %s = %f \n" ,name,bill);
+}
+
+int main()
+{
+	int n;
+	cin>>n;
+	user *u;
+	u=(user *)malloc(sizeof(int)*n);
+	clrscr();
+	for(int i=0; i<10; i++)
+	{
+		printf("enter the name of user and unit consumed by user[%d]:",i);
+		u[i].input();
+		u[i].output();
+		printf("do you want to quit 'Y' or 'N'\n");
+		if(getch()=='y'||getch()=='Y')
+			return 0;
+	}
+	getch();
+	return 0;
+}
+
+
+
+
+

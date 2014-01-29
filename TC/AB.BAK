@@ -1,0 +1,16 @@
+#include<malpani.h>
+void main()
+{
+int a[10],i=0;
+char b;
+while(1)
+{
+cin>>a[i];
+b=getch();
+if(int(b)==13)
+break;
+++i;
+}
+cout<<a[0];
+getch();
+}

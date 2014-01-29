@@ -1,0 +1,12 @@
+#include<stdio.h>
+#include<conio.h>
+void hello(void)
+{
+	printf("hello");
+}
+void main()
+{   clrscr();
+	int a=5;
+	printf("\nfghi!\n%d",a);
+	hello();
+}

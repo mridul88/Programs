@@ -1,0 +1,49 @@
+#include<cstdio>
+#include<cstdlib>
+using namespace std;
+
+int maxheap(int a[], int i, int n,int k)
+{
+	int j,item,temp;
+	j=2*i;
+	item=a[i];
+	while(j<=k)
+	{
+		if(j<n && a[j]<a[j+1])
+			j++;
+		if(item>a[j])
+			return 0;
+		else
+		  {//temp=a[j/2];
+			a[j/2]=a[j];
+			//a[j]=temp;
+			j=2*j;
+		  }
+		a[j/2]=item;
+	}
+	return 0;
+}
+void buildmaxheap(int a[],int n,int k)
+{
+	for(int i=(n+1)/2;i>0;i--)
+		maxheap(a,i,n,k);
+}
+
+int main()
+{  
+   	int *a,n=5,i,k;
+	printf(" enter the size of array and no. of min k");
+	scanf("%d %d",&n,&k);
+	a=new int[n+1];
+	a[0]=0;
+	for(i=1;i<=n;i++)
+	{	a[i]=rand()%100;
+		printf("%d,",a[i]);
+	}
+	buildmaxheap(a,n,k);
+	for(i=1;i<=n;i++)
+		printf("\n%d",a[i]);
+	while(getchar()!='\n');
+    getchar();
+    return 0;	
+}

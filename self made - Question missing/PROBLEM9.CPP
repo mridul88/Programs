@@ -1,0 +1,102 @@
+#include<stdio.h>
+
+static int  c[50][22];
+int prob(int i, int l,int o,int v,int e)
+{
+	int j;
+	for(j=0;c[i][j]!=0;j++)
+	{
+		switch(c[i][j])
+		{
+			case 'L': l=l++;
+					break;
+			case  'O': o=o++;
+					break;
+			case 'V': v=v++;
+					break;
+			case 'E': e=e++;
+					break;
+		}
+	}
+	int p=((l+o)*(l+v)*(l+e)*(o+v)*(o+e)*(v+e))%100;
+	return p;
+}
+void  sort(int *ans,int i)
+{
+	int j,k=0;
+	for(j=0;k==0 && (c[i][j]!= 0 || ans[j]!= 0);j++)
+	{
+		k=ans[j]-c[i][j];
+	}
+	if(k>0)
+	{
+		for(j=0;c[i][j]!=0;j++)
+			ans[j]=c[i][j];
+		for(;j<20;j++)
+			ans[j]=0;
+	}
+	return;
+}
+int main()
+{
+	int n,i=0,j,l,o,v,e,ch;
+	char *g;
+	scanf("%s",g);
+	ch=getchar();
+	ch=getchar();
+	while(ch!='\n')
+	{
+		j=0;
+		c[i][j]=ch;
+		ch=getchar();
+		while(ch!=' '&& ch!='\n')
+		{
+		   j++;
+		   c[i][j]=ch;
+		   ch=getchar();
+		}
+		i++;
+		ch=getchar();
+	}
+	n=i;
+	l=o=v=e=0;
+	int strlen=0;
+	for(i=0;*(g+i)!='\0';i++)
+		strlen++;
+	for(j=0;j<strlen;j++)
+	{
+		switch(g[j])
+		{
+			case 'L': l=l++;
+					break;
+			case  'O': o=o++;
+					break;
+			case 'V': v=v++;
+					break;
+			case 'E': e=e++;
+					break;
+		}
+	}
+	static int max=-1,b=0,ans[20];
+	for(i=0;i<n;i++)
+	{
+		c[i][21]=prob(i,l,o,v,e);
+		if(c[i][21]>max)
+		{
+			max=c[i][21];
+			b=i;
+		}
+	}
+	for(i=0;c[b][i]!= 0;i++)
+		ans[i]=c[b][i];
+	for(i=0;i<n;i++)
+	{
+		if(max==c[i][21])
+		{
+			sort(ans,i);
+		}
+	}
+	for(i=0;ans[i]!= 0;i++)
+		printf("%c",ans[i]);
+	return 0;
+}

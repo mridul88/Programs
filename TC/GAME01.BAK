@@ -1,0 +1,108 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+/* this is the solition to question question 1 of  BIO 01 "*/
+struct node
+{
+	int x;
+	struct node *next,*prev;
+};
+struct node*start;
+int create(struct node*ptr,int n)    /*create the linked list of
+										friends so that physical deletion */
+{
+	int static i=1;
+	if(i<n)
+	{  ptr->x=i;
+		ptr->next=new(struct node);
+		ptr->next->prev=ptr;
+		i++;
+
+	}
+	else
+	{
+		ptr->x=n;
+		ptr->next=start;
+		start->prev=ptr;
+		return 0;
+	}
+	return 0;
+}
+int print(struct node *ptr)
+{
+	printf("%d",ptr->x);
+	if(ptr->prev->x==start->x)
+		return 0;
+	else
+		print(ptr->prev);
+	return 0;
+}
+int game(struct node*ptr,int g)
+{
+	while(ptr->next->x!=ptr->x)     /*if only one element is left*/
+	{
+	for(int i=0;i<g-2;i++)
+		ptr=ptr->next;
+	struct node*temp=ptr->next;
+	printf("\n%d",temp->x);
+	if(ptr->next==start)           /*delete the node*/
+	{
+		ptr->next=temp->next;
+		start=temp->next;
+		free(temp);
+		}
+	else
+		{	ptr->next=temp->next;
+			free(temp);
+		}
+	ptr=ptr->next;
+	}
+	return(ptr->x);
+}
+int gamecc(struct node*ptr,int g)
+{
+	while(ptr->prev->x!=ptr->x)     /*if only one element is left*/
+	{
+	for(int i=0;i<g-2;i++)
+		ptr=ptr->prev;
+	struct node*temp=ptr->prev;
+	printf("\n%d\t",temp->x);
+	if(ptr->prev==start)           /*delete the node*/
+		{
+		ptr->prev=temp->prev;
+		start=temp->prev;
+		free(temp);
+		}
+	else
+		{	ptr->prev=temp->prev;
+			free(temp);
+		}
+	ptr=ptr->prev;
+	print(start);
+	}
+	return(ptr->x);
+}
+int main()
+{   clrscr();
+	int n,g,r,rr;
+	printf("enter the no.of friends & no. of rhyme words");
+	scanf("%d %d",&n,&g);
+	create(start,n);
+	r=game(start,g);
+	rr=gamecc(start,g);
+	printf("last person is: %d\n",r);
+	printf("last person in counterclockwise is: %d",rr);
+  /*	create(start,100);
+	for(g=2;g<51;g++)
+	{
+		r=game(start,g);
+		rr=gamecc(start,g);
+		if(r==rr)
+			{
+				printf("smallest no. of words is %d",g);
+				break;
+			}
+	}*/
+	getch();
+	return 0;
+}

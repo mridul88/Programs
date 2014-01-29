@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+int main()
+{   clrscr();
+	int**a,j,b,m=0;
+	scanf("%d%d",&j,&b);
+
+	while(j!=0||b!=0)
+	{
+		a[m][0]=j;
+		a[m][1]=b;
+		m++;
+		scanf("%d%d",&j,&b);
+	}
+	for(j=0;j<m;j++)
+		printf("%d%d",a[j][0],a[j][1]);
+	getch();
+	return 0;
+}

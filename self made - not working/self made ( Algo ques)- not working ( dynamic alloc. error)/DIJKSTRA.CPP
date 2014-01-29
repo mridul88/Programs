@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<conio.h>
+int min(int *dist,int *s,int n)
+{
+	    int i,j,min;
+	    for(i=0;i<n;i++)
+	    {
+		         if(dist[i]>0)
+		         {
+                       min= dist[i];
+			                 break;
+           }
+     }
+	
+	   for(i=0;i<n;i++)
+	   {
+             if(dist[i]>0 && dist[i]<=min && s[i]==0)
+		         {
+                     min=dist[i];
+		     	           j=i;
+           }
+    }
+	  return j;
+}
+
+int main()
+{
+    	int **a,n,i,j,k,l,n1,n2,d,*s,*dist;;
+	    printf("enter the no. of nodes\n");
+     	scanf("%d",&n);
+     	s=new int [n];
+	    dist=new int [n];
+	    for(i=0;i<n;i++)
+	    {	
+             *(a+i)=new int [n];
+		         s[i]=0;
+		         for(j=0;j<n;j++)
+                      a[i][j]=0;
+     }
+	   printf("enter the edge and distance\n to quit write  0 0 0\n");
+	   printf("\nnode1\tnode2\tdistance\n");
+	   scanf("%d %d %d",&i,&j,&k);
+	   while(j!=0 || i!=0 ||k!=0)
+	   {
+		            a[i-1][j-1]=k;
+		            scanf("%d %d %d",&i,&j,&k);
+    }
+	  printf("enter the starting node");
+	  scanf("%d",&n1);
+	s[n1-1]=1;
+	for(i=0;i<n;i++)
+		dist[i]=a[n1-1][i];
+	for(j=1;j<n;j++)
+	{
+		for(d=0;d<n;d++)
+			printf("%d\t",dist[d]);
+		printf("\n");
+		k=min(dist,s,n);
+		s[k]=1;
+		for(i=0;i<n;i++)
+		{
+			if(s[i]==0 &&a[k][i]!=0 && ( dist[i]>(dist[k]+ a[k][i]) || dist[i]==0 ))
+			{
+				dist[i]=dist[k]+a[k][i];
+			}
+		}
+	}
+	for(i=0;i<n;i++)
+	{
+		if(dist[i]==0 && i!=(n1-1) )
+			printf("shortest distance to %d from node %d is = NOT REACHABLE\n",i+1,n1);
+		else
+			printf("shortest distance to %d from node %d is =%d\n",i+1,n1,dist[i]);
+	}
+	getch();
+	return 0;
+}

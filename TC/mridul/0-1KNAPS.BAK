@@ -1,0 +1,36 @@
+#include<conio.h>
+#include<stdio.h>
+int main()
+{
+	clrscr();
+	int i,j,n,k,l,**a,p=0,m,w=0,maxw;
+	printf("enter the no. of items\n");
+	scanf("%d",&n);
+	for(i=0;i<3;i++)
+		*(a+i)=new int [n];
+	printf("enter profit and weight of the individual item\nprofit\tweight\n");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d %d",&a[0][i],&a[1][i]);
+		a[2][i]=0;
+	}
+	printf("enter the maximum allowable weight");
+	scanf("%d",&maxw);
+	for(m=1;m<=maxw;m++)
+	{
+		for(i=0;i<n;i++)
+		{
+			if(a[1][i]<m && a[2][i]==0)
+			{
+				if(w+a[1][i]<=m)
+				{
+					w=w+a[1][i];
+					p=p+a[0][i];
+					a[2][i]=1;
+				}
+				else
+				{
+					if(a[0][i]>p
+	getch();
+	return 0;
+}

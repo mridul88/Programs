@@ -1,0 +1,19 @@
+#include<stdio.h>
+#include<conio.h>
+int main()
+{
+	int i,j;
+	FILE *fp;
+	char c;
+	fp=fopen("test.in","w");
+	fprintf(fp,"nfjnvn\nmridul");
+	fclose(fp);
+	fp=fopen("test.in","r");
+	while((c=getc(fp))!=EOF)
+	{
+	//fscanf(fp,"%c",c);
+	printf("%c",c);
+	}
+	getch();
+	return 0;
+}

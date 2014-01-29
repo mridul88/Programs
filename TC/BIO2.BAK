@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<conio.h>
+void main()
+{
+	clrscr();
+	long int n,ans=0,f,s,sum,flag=0;
+	scanf("%ld",&n);
+	sum=n+1;
+	while(n>5)
+	{
+		flag=0;
+		for(int i=2;i<n/2;i++)
+		{
+			if(n%i==0)
+			{
+				flag=1;
+				f=n/i;
+				s=f+i;
+				if(s<sum)
+				{
+					sum=s;
+					n=f;
+					ans=ans+i;
+				}
+			}
+		}
+		if(flag!=1)
+		{
+			n=n-1;
+			ans=ans+1;
+		}
+	}
+	ans=ans+n;
+	printf("%ld ",ans);
+	getch();
+}
